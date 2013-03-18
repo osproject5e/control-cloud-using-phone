@@ -74,7 +74,13 @@ public class Keypairs {
 	 
  
 	}
-
+	public String DeleteKeypair(String Keyname) throws Exception {
+		init();
+		DeleteKeyPairRequest kpr = new DeleteKeyPairRequest();
+		kpr.setKeyName(Keyname);
+		ec2.deleteKeyPair(kpr);
+		return "Keypair deleted";
+		}
 	public static void main(String s[]) {
 	}
 }

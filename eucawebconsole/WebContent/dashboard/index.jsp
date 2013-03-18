@@ -71,7 +71,48 @@
                     <div data-role="collapsible"  data-content-theme="d"
 					data-inset="false" >
                         <h3>
-                            Users & Groups
+                            Storage Controller
+                        </h3>
+                        <ul data-role="listview" data-divider-theme="b" data-inset="false" >
+                            <li data-theme="c">
+                                <a href="listvolume.jsp" data-transition="slide">
+                                  Volume
+                                </a>
+                            </li>
+                            <li data-theme="c">
+                                <a href="listSnapshots.jsp" data-transition="slide">
+                                  Snapshots
+                                </a>
+                            </li>
+                            </ul>
+                    </div>
+
+
+                    <div data-role="collapsible"  data-content-theme="d"
+					data-inset="false" >
+                        <h3>
+                             Elastic IP
+                        </h3>
+                        <ul data-role="listview" data-divider-theme="b" data-inset="false" >
+                            <li data-theme="c">
+                                <a href="listAddress.jsp" data-transition="slide">
+                                   Describe
+                                </a>
+                            </li>
+                            <li data-theme="c">
+                                <a href="#" data-transition="slide">
+                                   Associate New
+                                </a>
+                            </li>
+                            </ul>
+                    </div>
+
+
+
+                    <div data-role="collapsible"  data-content-theme="d"
+					data-inset="false" >
+                        <h3>
+                            Security Groups
                         </h3>
                         <ul data-role="listview" data-divider-theme="b" data-inset="false" >
                             <li data-theme="c">

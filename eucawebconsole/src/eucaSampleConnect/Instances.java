@@ -9,10 +9,12 @@ import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.PropertiesCredentials;
 import com.amazonaws.services.ec2.AmazonEC2;
 import com.amazonaws.services.ec2.AmazonEC2Client;
+import com.amazonaws.services.ec2.model.CreateSecurityGroupRequest;
 import com.amazonaws.services.ec2.model.DescribeImagesResult;
 import com.amazonaws.services.ec2.model.DescribeInstancesResult;
 import com.amazonaws.services.ec2.model.Instance;
 import com.amazonaws.services.ec2.model.Reservation;
+import com.amazonaws.services.ec2.model.RunInstancesRequest;
 import com.amazonaws.services.ec2.model.StartInstancesRequest;
 import com.amazonaws.services.ec2.model.StopInstancesRequest;
 import com.amazonaws.services.ec2.model.StopInstancesResult;
@@ -54,7 +56,7 @@ public class Instances {
 
         ec2.setEndpoint("http://192.168.12.25:8773/services/Eucalyptus");
         System.out.println("end init");
-       
+
     }
 
     public  Set<Instance> getRunningInstances() throws Exception {
@@ -115,5 +117,20 @@ public class Instances {
     	System.out.println(str.toString());
     
     }
+    
+    
+    public void create_instance(String emi,String keypair) throws Exception
+    {
+		init();
+		RunInstancesRequest rir = new RunInstancesRequest();
+		rir.setImageId(emi);
+		rir.setKeyName(keypair);	
+		rir.setMaxCount(1);
+		rir.setMinCount(1);
+		ec2.runInstances(rir);
+        DescribeInstancesResult describeInstancesRequest = ec2.describeInstances();
+    	
+    }
+    
     
 }

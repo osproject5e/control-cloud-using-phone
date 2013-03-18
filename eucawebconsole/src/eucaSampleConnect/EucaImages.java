@@ -45,6 +45,8 @@ public class EucaImages {
 
         ec2.setEndpoint("http://192.168.12.25:8773/services/Eucalyptus");
         System.out.println("end init");
+        
+        
        
     }
     

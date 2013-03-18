@@ -92,6 +92,12 @@ catch(Exception ex)
 						out.print("<h3>" + k.getKeyName() + "</h3>");
 								out.print("<p style=\" white-space: normal; \">" + k.getKeyFingerprint() + "</p>");
 					%>
+					
+					<div data-role="controlgroup" data-type="horizontal">
+					<a href="deleteKeypairs.jsp?keyname=<%=k.getKeyName()%>" data-role="button" data-theme="b">Delete</a> <a
+					href="deleteKeypairs.jsp?keyname=<%=k.getKeyName()%>"> </a>
+			
+				</div>
 				</div>
 				<%
 					}
