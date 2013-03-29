@@ -41,7 +41,7 @@ public class Snapshots extends CLConnection {
 	}
 	public static void main(String a[]) throws Exception
 	{
-		init();
+		//init();
 		//ec2.describeSnapshots().
 		
 	}

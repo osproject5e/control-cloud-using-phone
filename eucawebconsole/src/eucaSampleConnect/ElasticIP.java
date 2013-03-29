@@ -10,6 +10,8 @@ import com.amazonaws.auth.PropertiesCredentials;
 import com.amazonaws.services.ec2.AmazonEC2;
 import com.amazonaws.services.ec2.AmazonEC2Client;
 import com.amazonaws.services.ec2.model.Address;
+import com.amazonaws.services.ec2.model.AllocateAddressRequest;
+import com.amazonaws.services.ec2.model.AssociateAddressRequest;
 import com.amazonaws.services.ec2.model.CreateSecurityGroupRequest;
 import com.amazonaws.services.ec2.model.DescribeAddressesRequest;
 import com.amazonaws.services.ec2.model.DescribeAddressesResult;
@@ -24,7 +26,7 @@ import com.amazonaws.services.ec2.model.StopInstancesRequest;
 import com.amazonaws.services.ec2.model.StopInstancesResult;
 import com.amazonaws.services.elasticloadbalancing.model.DescribeInstanceHealthRequest;
 
-public class ElasticIP {
+public class ElasticIP extends CLConnection {
 
     /*
      * Important: Be sure to fill in your AWS access credentials in the
@@ -33,20 +35,9 @@ public class ElasticIP {
      * http://aws.amazon.com/security-credentials
      */
 
-    static AmazonEC2      ec2;
+/*    static AmazonEC2      ec2;
     //ArrayList<String> instances ;
 
-    /**
-     * The only information needed to create a client are security credentials
-     * consisting of the AWS Access Key ID and Secret Access Key. All other
-     * configuration, such as the service endpoints, are performed
-     * automatically. Client parameters, such as proxies, can be specified in an
-     * optional ClientConfiguration object when constructing a client.
-     *
-     * @see com.amazonaws.auth.BasicAWSCredentials
-     * @see com.amazonaws.auth.PropertiesCredentials
-     * @see com.amazonaws.ClientConfiguration
-     */
     private static void init() throws Exception {
     	System.out.println("in function init");
         AWSCredentials credentials = new PropertiesCredentials(
@@ -60,15 +51,10 @@ public class ElasticIP {
 
         ec2.setEndpoint("http://192.168.12.25:8773/services/Eucalyptus");
         System.out.println("end init");
-//        
-//        ec2.allocateAddress();
-//        ec2.associateAddress(arg0);
-//        ec2.describeAddresses();
-//        ec2.disassociateAddress(arg0);
-//        ec2.des
+        
 
     }
-    public List<Address> listAddress() throws Exception
+  */  public List<Address> listAddress() throws Exception
     { 
     	init();
     	DescribeAddressesResult dar = ec2.describeAddresses();    	
@@ -77,12 +63,25 @@ public class ElasticIP {
      	System.out.println(add.toString());
      	return add;
     } 
+    public void associateIp(String instanceId, String  publicIp) throws Exception
+    { 
+    	init();
+    	AssociateAddressRequest aar = new AssociateAddressRequest(instanceId, publicIp);
+    	System.out.println("publicIp in java file : "+publicIp);
+    	try{
+    	ec2.associateAddress(aar);    	
+    	}
+    	catch(Exception e){
+    		System.out.println(e);
+    	}
+     	//return add;
+    } 
 public static void main(String a[]) throws Exception
 {
 	
 	 ElasticIP eip = new ElasticIP();
 	 System.out.println(eip.listAddress().toString());
-	
+	eip.associateIp("i-A29143BA", "192.168.12.201");
 	
 	}
        

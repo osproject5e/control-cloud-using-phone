@@ -17,7 +17,8 @@
 	}
 	catch(Exception ex)
 	{
-		session.setAttribute("message",session.getAttribute("message")+	" Error in getting information from cloud");
+		session.setAttribute("message1",session.getAttribute("message")+	" Error in getting information from cloud");
+		response.sendRedirect("index.jsp");
 	}
 	
 	
@@ -50,17 +51,19 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <title>Euca Admin</title>
 
+
 <link rel="stylesheet"
-	href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	href="../jquery.mobile-1.3.0/jquery.mobile-1.3.0.min.css" />
 
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+	src="../jquery.mobile-1.3.0/jquery.min.js">
 	
 </script>
 <script
-	src="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.js">
+	src="../jquery.mobile-1.3.0/jquery.mobile-1.3.0.min.js">
 	
 </script>
+
 
 
 </head>

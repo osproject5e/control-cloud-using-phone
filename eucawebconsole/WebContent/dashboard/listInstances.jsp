@@ -19,7 +19,8 @@ try{
 	instances = (Set<Instance>) ins.getRunningInstances();
 }
 catch(Exception ex){
-	session.setAttribute("message", "Error in getting Instance Info");
+	session.setAttribute("message1", "Error in getting Instance Info");
+	response.sendRedirect("index.jsp");
 	
 }
 %>
@@ -65,17 +66,19 @@ catch(Exception ex)
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
 
+
 <link rel="stylesheet"
-	href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	href="../jquery.mobile-1.3.0/jquery.mobile-1.3.0.min.css" />
 
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+	src="../jquery.mobile-1.3.0/jquery.min.js">
 	
 </script>
 <script
-	src="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.js">
+	src="../jquery.mobile-1.3.0/jquery.mobile-1.3.0.min.js">
 	
 </script>
+
 
 </head>
 <body>
@@ -137,13 +140,24 @@ catch(Exception ex)
 							out.println("Instance Id : " + inst.getInstanceId()
 											+ "<br />Public IP :" + inst.getPublicIpAddress()
 											+ "<br />Launch Time :" + inst.getLaunchTime()
-											+ "<br />Status :" + inst.getState().getName() + "");
+											+ "<br />Status :" + inst.getState().getName() 
+											+ "<br />ImageId :" + inst.getImageId()
+											+ "<br />Instance Type :" + inst.getInstanceType()
+											+ "<br />Keyname :" + inst.getKeyName()
+											+ "<br />RAM disk ID :" + inst.getRamdiskId()
+											+ "<br />Monitoring Status :" + inst.getMonitoring().getState()+ "");	
+						
+						
+						
+						
 						%>
 					
 					<div data-role="controlgroup" data-type="horizontal">
-						<a href="#" data-role="button" data-theme="b">Start</a> <a
+						<!--  <a href="#" data-role="button" data-theme="b">Start</a> <a
 							href="stopInstance.jsp?instance_id=<%=inst.getInstanceId()%>"
-							data-role="button" data-theme="b">Stop</a> <a href="#index.html"
+							data-role="button" data-theme="b">Stop</a>
+							 -->
+							 <a href="#index.html"
 							data-role="button" data-theme="b">Terminate</a>
 					</div>
 					</p>

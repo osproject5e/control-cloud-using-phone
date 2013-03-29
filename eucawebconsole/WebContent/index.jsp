@@ -15,9 +15,6 @@
 		<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.js"></script>
        
-        
-         -->
-
 <link rel="stylesheet"
 	href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 
@@ -27,6 +24,20 @@
 </script>
 <script
 	src="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.js">
+	
+</script>
+        
+         -->
+
+<link rel="stylesheet"
+	href="jquery.mobile-1.3.0/jquery.mobile-1.3.0.min.css" />
+
+<script
+	src="jquery.mobile-1.3.0/jquery.min.js">
+	
+</script>
+<script
+	src="jquery.mobile-1.3.0/jquery.mobile-1.3.0.min.js">
 	
 </script>
 

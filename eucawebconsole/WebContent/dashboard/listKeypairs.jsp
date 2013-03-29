@@ -18,7 +18,8 @@ List<KeyPairInfo> keyInfo =null;
 catch(Exception ex)
 {
 //	out.print("Err");
-	session.setAttribute("message",session.getAttribute("message")+	" Error in getting information from cloud");
+	session.setAttribute("message1",session.getAttribute("message")+	" Error in getting information from cloud");
+	response.sendRedirect("index.jsp");
 }
 %>
 
@@ -32,17 +33,19 @@ catch(Exception ex)
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <title>Euca Admin</title>
 
+
 <link rel="stylesheet"
-	href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	href="../jquery.mobile-1.3.0/jquery.mobile-1.3.0.min.css" />
 
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+	src="../jquery.mobile-1.3.0/jquery.min.js">
 	
 </script>
 <script
-	src="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.js">
+	src="../jquery.mobile-1.3.0/jquery.mobile-1.3.0.min.js">
 	
 </script>
+
 
 
 </head>
@@ -51,7 +54,7 @@ catch(Exception ex)
 
 
 	<!-- Home -->
-	 <div data-role="page" id="page1" data-theme="a" >
+	<div data-role="page" id="page1" data-theme="a">
 		<div data-theme="b" data-role="header">
 			<a href="index.jsp" data-transition="pop" data-icon="home">Home</a>
 			<h3>Keypairs</h3>
@@ -69,11 +72,11 @@ catch(Exception ex)
 					if (msg.trim().length() != 0) {
 			%>
 			<div style="color: red" class="ui-bar ui-bar-c">
-			
+
 				<%
 					out.print(msg);
 				%>
-			
+
 			</div>
 
 			<div data-role="collapsible-set">
@@ -85,19 +88,37 @@ catch(Exception ex)
 						while (it.hasNext()) {
 							KeyPairInfo k = (KeyPairInfo) it.next();
 				%>
-			   <div data-role="collapsible" data-collapsed="true" data-content-theme="d"
-					data-inset="false" >
+				<div data-role="collapsible" data-collapsed="true"
+					data-content-theme="d" data-inset="false">
+
+					<%
+						//					out.print("<h3>" + k.getKeyName() + "</h3>");
+								//						out.print("<p style=\" white-space: normal; \">" + k.getKeyFingerprint() + "</p>");
+					%>
 
 					<%
 						out.print("<h3>" + k.getKeyName() + "</h3>");
-								out.print("<p style=\" white-space: normal; \">" + k.getKeyFingerprint() + "</p>");
+								//
+								out.print("<p style=\" white-space: normal; \">"
+										+ k.getKeyFingerprint() + "</p>");
+								String keyFingerPrint = k.getKeyFingerprint();
+								char[] chars = keyFingerPrint.toCharArray();
+								out.print("<p style=\" white-space: normal; \">");
+								for (int j = 0; j < keyFingerPrint.length(); j++) {
+									if (j % 20 == 0) {
+										out.print("<br/>");
+									}
+									out.print(chars[j]);
+								}
+								out.print("</p>");
 					%>
-					
+
 					<div data-role="controlgroup" data-type="horizontal">
-					<a href="deleteKeypairs.jsp?keyname=<%=k.getKeyName()%>" data-role="button" data-theme="b">Delete</a> <a
-					href="deleteKeypairs.jsp?keyname=<%=k.getKeyName()%>"> </a>
-			
-				</div>
+						<a href="deleteKeypairs.jsp?keyname=<%=k.getKeyName()%>"
+							data-role="button" data-theme="b">Delete</a> <a
+							href="deleteKeypairs.jsp?keyname=<%=k.getKeyName()%>"> </a>
+
+					</div>
 				</div>
 				<%
 					}
@@ -115,33 +136,33 @@ catch(Exception ex)
 
 
 
-		
-		<!-- Create new Keypairs start-->
-		    
-		    
-		<!--      <a href="#popupLogin" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-icon="check" data-theme="a" data-transition="pop">
-    Create Keypair</a> -->
-   
-		<div data-role="popup" id="popupMenu" data-theme="a">
-			<div data-role="popup" id="popupLogin" data-theme="b"
-				class="ui-corner-all">
-				<a href="#" data-rel="back" data-role="button" data-theme="a"
-					data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
-				<form action="db_create_keypairs.jsp" data-ajax="false">
-					<div style="padding: 10px 20px;">
-						<h3>Enter Keypair Name</h3>
-						<label for="un" class="ui-hidden-accessible">Key Pair
-							Name:</label> <input type="text" name="keyname" id="un" value=""
-							placeholder="Keypair">
-						<button type="submit" data-theme="b" data-icon="check">Create
-							Now</button>
-					</div>
-				</form>
-			</div>
-		</div>
-		<!-- Create new Keypairs End -->
 
-</div>
+			<!-- Create new Keypairs start-->
+
+
+			<!--      <a href="#popupLogin" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-icon="check" data-theme="a" data-transition="pop">
+    Create Keypair</a> -->
+
+			<div data-role="popup" id="popupMenu" data-theme="a">
+				<div data-role="popup" id="popupLogin" data-theme="b"
+					class="ui-corner-all">
+					<a href="#" data-rel="back" data-role="button" data-theme="a"
+						data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+					<form action="db_create_keypairs.jsp" data-ajax="false">
+						<div style="padding: 10px 20px;">
+							<h3>Enter Keypair Name</h3>
+							<label for="un" class="ui-hidden-accessible">Key Pair
+								Name:</label> <input type="text" name="keyname" id="un" value=""
+								placeholder="Keypair">
+							<button type="submit" data-theme="b" data-icon="check">Create
+								Now</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- Create new Keypairs End -->
+
+		</div>
 	</div>
 
 

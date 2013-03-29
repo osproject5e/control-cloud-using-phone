@@ -9,7 +9,7 @@ import com.amazonaws.services.ec2.AmazonEC2Client;
 import com.amazonaws.services.ec2.model.DescribeImagesResult;
 import com.amazonaws.services.ec2.model.Image;
 
-public class EucaImages {
+public class EucaImages extends CLConnection {
 
     /*
      * Important: Be sure to fill in your AWS access credentials in the
@@ -17,21 +17,11 @@ public class EucaImages {
      *            sample.
      * http://aws.amazon.com/security-credentials
      */
-
+/*
     static AmazonEC2      ec2;
     //ArrayList<String> instances ;
 
-    /**
-     * The only information needed to create a client are security credentials
-     * consisting of the AWS Access Key ID and Secret Access Key. All other
-     * configuration, such as the service endpoints, are performed
-     * automatically. Client parameters, such as proxies, can be specified in an
-     * optional ClientConfiguration object when constructing a client.
-     *
-     * @see com.amazonaws.auth.BasicAWSCredentials
-     * @see com.amazonaws.auth.PropertiesCredentials
-     * @see com.amazonaws.ClientConfiguration
-     */
+    
     private static void init() throws Exception {
     	System.out.println("in function init");
         AWSCredentials credentials = new PropertiesCredentials(
@@ -49,7 +39,7 @@ public class EucaImages {
         
        
     }
-    
+  */  
     public 	List<Image> getImages() throws Exception
     {
     	

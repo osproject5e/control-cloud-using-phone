@@ -43,6 +43,7 @@ public class CopyOfAWSCheckRunnigInstances {
         ec2 = new AmazonEC2Client(credentials);
 
         ec2.setEndpoint("http://192.168.12.25:8773/services/Eucalyptus");
+        
        
     }
 

@@ -49,11 +49,11 @@ public class Volumes extends CLConnection {
 		ec2.detachVolume(dvr);
 	}
 	
-	public static void main(String a[]) throws Exception
+	public static void main(String a[]) 
 	{
 		
 		//createVolumes(1,"CLUSTER01");
-		init();
+	/*	init();
 		
 		
 		
@@ -67,6 +67,6 @@ public class Volumes extends CLConnection {
 			
 		}
 		
-		
+	*/	
 	}
 }
