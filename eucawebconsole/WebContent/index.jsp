@@ -1,5 +1,6 @@
 <%
-	session.setAttribute("message", "");
+	if(session.getAttribute("message")==null)
+		session.setAttribute("message", "");
 %>
 <!DOCTYPE html>
 <html>
@@ -49,7 +50,30 @@
 			<h1>EUCA ADMIN</h1>
 		</div>
 		<div data-role="content">
-			<form action="dashboard/index.jsp">
+		
+		<%
+			System.out.println(session.getAttribute("message1")+"in dash1");
+			String msg = (String) session.getAttribute("message1");
+			
+				
+				
+				if (msg!=null && msg.trim().length() != 0) {
+					session.setAttribute("message1", "");
+			%>
+			<div style="color: red" class="ui-bar ui-bar-c">
+				<%
+					out.print(msg);
+				System.out.println(msg);
+				%>
+			</div>
+
+			<%
+				}
+			%>
+
+		
+		
+			<form action="LoginValidate.jsp">
 				<div data-role="fieldcontain">
 					<fieldset data-role="controlgroup" data-mini="true">
 						<label for="userId"> User ID </label> <input name="userId"
@@ -63,9 +87,17 @@
 							type="password" />
 					</fieldset>
 				</div>
-				<input id="login" type="submit" data-theme="b" data-icon="home"
+				
+					<input id="login"  name = "login" type="submit" data-theme="b" data-icon="home"
 					data-iconpos="right" value="Login" />
 			</form>
+			
+				<form action="register.jsp">
+				<input id="login" name = "login" type="submit" data-theme="b"
+					 value="Register" />
+				</form>
+				
+			
 		</div>
 	</div>
 </body>

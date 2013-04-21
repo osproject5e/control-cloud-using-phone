@@ -174,11 +174,12 @@
 	//System.out.println("request URL= " + redirectURL);
 	ResultSet rs = null;
 	try{
-		DB_Config db = new DB_Config();
+		CopyOfDB_Config db = new CopyOfDB_Config();
 		
 		Connection con = db.registerDB();
 		
-		String query ="select * from  quicklinks  where id=1" ;		
+		String query ="select * from  quicklinks  where id=1" ;
+		System.out.print(query);
 		Statement st = con.createStatement();
 		rs = st.executeQuery(query);
 		if(rs.next())

@@ -11,12 +11,12 @@ import java.sql.Statement;
 
 public class DB_Config {
 	/* for accessing database and producing results */
-	private String db_name;
-	private String prefix;
-	private int port_no;
-	private  String host_name;
-	private String user_name;
-	private String password;
+	static String db_name="euca";
+	private String prefix="";
+	static int port_no=3306;
+	static  String host_name="localhost";
+	static String user_name="root";
+	static String password="admin";
 	protected Connection conn;
 	protected DatabaseMetaData dmd;
 	protected ResultSetMetaData rsmd = null;
